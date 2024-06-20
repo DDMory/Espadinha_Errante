@@ -1,0 +1,200 @@
+[gd_scene load_steps=15 format=3 uid="uid://c8h1ytb1wk70m"]
+
+[ext_resource type="Texture2D" uid="uid://ciuxn1dexe8ex" path="res://addons/tiny_sword/UI/Buttons/Button_Blue_3Slides.png" id="1_5a2x1"]
+[ext_resource type="Shader" path="res://shaders/blur_shader.gdshader" id="1_277tr"]
+[ext_resource type="Script" path="res://UI/pause_ui.gd" id="1_q5vtm"]
+[ext_resource type="Texture2D" uid="uid://cqd22vk73dfil" path="res://addons/tiny_sword/UI/Buttons/Button_Disable_3Slides.png" id="2_b05mn"]
+[ext_resource type="Texture2D" uid="uid://d1eu2a526v3f5" path="res://addons/tiny_sword/UI/Buttons/Button_Blue_3Slides_Pressed.png" id="3_23rh8"]
+[ext_resource type="Texture2D" uid="uid://j5hff3ib6mbm" path="res://addons/tiny_sword/UI/Buttons/Button_Hover_3Slides.png" id="6_4whwl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jewm3"]
+shader = ExtResource("1_277tr")
+shader_parameter/lod = 0.0
+
+[sub_resource type="SystemFont" id="SystemFont_k1n1a"]
+font_names = PackedStringArray("Fantasy")
+
+[sub_resource type="Theme" id="Theme_fm6e0"]
+default_font = SubResource("SystemFont_k1n1a")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ksvnt"]
+font_size = 25
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_gcv2o"]
+resource_name = "pause_game"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 0.233258),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dms6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w02ge"]
+resource_name = "resume_game"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.8, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eq3yx"]
+_data = {
+"RESET": SubResource("Animation_dms6i"),
+"pause_game": SubResource("Animation_gcv2o"),
+"resume_game": SubResource("Animation_w02ge")
+}
+
+[node name="PauseUi" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_q5vtm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_jewm3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -32.0
+offset_right = 96.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume_buttom" type="TextureButton" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_5a2x1")
+texture_pressed = ExtResource("2_b05mn")
+texture_hover = ExtResource("3_23rh8")
+texture_focused = ExtResource("6_4whwl")
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/Resume_buttom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -18.0
+offset_right = 65.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_fm6e0")
+text = "RESUME GAME"
+label_settings = SubResource("LabelSettings_ksvnt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit_buttom" type="TextureButton" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_5a2x1")
+texture_pressed = ExtResource("2_b05mn")
+texture_hover = ExtResource("3_23rh8")
+texture_focused = ExtResource("6_4whwl")
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/Quit_buttom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -18.0
+offset_right = 65.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_fm6e0")
+text = "QUIT GAME"
+label_settings = SubResource("LabelSettings_ksvnt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eq3yx")
+}
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Resume_buttom" to="." method="_on_resume_buttom_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Quit_buttom" to="." method="_on_quit_buttom_pressed"]

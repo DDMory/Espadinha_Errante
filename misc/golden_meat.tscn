@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbw2wah7pd1ub"]
+
+[ext_resource type="PackedScene" uid="uid://cj1vgpardskp1" path="res://misc/Meat.tscn" id="1_hdb16"]
+
+[node name="SpectralMeat" instance=ExtResource("1_hdb16")]
+self_modulate = Color(3.784, 2.703, 3.784, 1)
+scale = Vector2(1.25, 1.25)
+Rege_Amount = 8

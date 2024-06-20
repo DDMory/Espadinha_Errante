@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://cyrudqx8daumo"]
+
+[ext_resource type="Script" path="res://UI/mainMenu.gd" id="1_d5f62"]
+[ext_resource type="Texture2D" uid="uid://bmdaeo7kv0cju" path="res://addons/tiny_sword/UI/Ribbons/Ribbon_Blue_3Slides.png" id="1_yhesa"]
+[ext_resource type="Texture2D" uid="uid://ciuxn1dexe8ex" path="res://addons/tiny_sword/UI/Buttons/Button_Blue_3Slides.png" id="2_vthpq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_08pwj"]
+texture = ExtResource("1_yhesa")
+texture_margin_left = 48.0
+texture_margin_top = 16.0
+texture_margin_right = 48.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="SystemFont" id="SystemFont_hc7wl"]
+font_names = PackedStringArray("Fantasy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_5w57w"]
+line_spacing = 2.0
+font = SubResource("SystemFont_hc7wl")
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+outline_size = 6
+outline_color = Color(0.648791, 0.019306, 0.011972, 1)
+shadow_color = Color(0.718213, 0.601132, 0.0525775, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_4tfve"]
+font_names = PackedStringArray("Fantasy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_gxohj"]
+font = SubResource("SystemFont_4tfve")
+font_size = 31
+font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.941176)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d5f62")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.5
+offset_top = -172.5
+offset_right = 261.5
+offset_bottom = -111.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_08pwj")
+text = "O Pequeno Cavaleiro Errante"
+label_settings = SubResource("LabelSettings_5w57w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Nem_Game_Buttom" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_vthpq")
+
+[node name="Label" type="Label" parent="VBoxContainer/Nem_Game_Buttom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -20.0
+offset_right = 44.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "NEW GAME"
+label_settings = SubResource("LabelSettings_gxohj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit_Game_Buttom" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_vthpq")
+
+[node name="Label" type="Label" parent="VBoxContainer/Quit_Game_Buttom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -20.0
+offset_right = 44.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "QUIT GAME"
+label_settings = SubResource("LabelSettings_gxohj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Nem_Game_Buttom" to="." method="_on_nem_game_buttom_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit_Game_Buttom" to="." method="_on_quit_game_buttom_pressed"]

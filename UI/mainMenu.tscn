@@ -14,6 +14,7 @@ axis_stretch_horizontal = 1
 
 [sub_resource type="SystemFont" id="SystemFont_hc7wl"]
 font_names = PackedStringArray("Fantasy")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_5w57w"]
 line_spacing = 2.0
@@ -26,6 +27,7 @@ shadow_color = Color(0.718213, 0.601132, 0.0525775, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_4tfve"]
 font_names = PackedStringArray("Fantasy")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_gxohj"]
 font = SubResource("SystemFont_4tfve")

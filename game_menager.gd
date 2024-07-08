@@ -10,6 +10,7 @@ var time_elapsed_string: String
 var meat_counter: int = 0
 var gold_counter: int = 0
 var monsters_defeated_counter: int = 0
+var pause_open: bool = false
 
 func end_game():
 	
